@@ -10,6 +10,7 @@ from flowlauncher import FlowLauncher
 import pytube
 from pathlib import Path
 from time import sleep
+import ctypes
 from random import randint
 class YoutubeDownload(FlowLauncher):
 
@@ -47,15 +48,17 @@ class YoutubeDownload(FlowLauncher):
         home = str(Path.home())
         os.chdir("{}\\Downloads".format(home))
         out_audio = mp3.download()
+        MessageBox = ctypes.windll.user32.MessageBoxW
+        MessageBox(None, 'Your Video Is Downloading...', 'Message', 0)
         base, ext = os.path.splitext(out_audio)
         new_file = base + '.mp3'
         if os.path.isfile(new_file):
             new_file = base+str(randint(1,100000)) + '.mp3'
             os.rename(out_audio, new_file)
+            os.system("explorer .")
             return
         os.rename(out_audio, new_file)
-        sleep(1.5)
-        os.system("mediaplayer {}".format(new_file))
+        os.system("explorer .")
 
 
     def download_video(self, url):
@@ -64,16 +67,18 @@ class YoutubeDownload(FlowLauncher):
         home = str(Path.home())
         os.chdir("{}\\Downloads".format(home))
         out_video = mp4.download()
+        MessageBox = ctypes.windll.user32.MessageBoxW
+        MessageBox(None, 'Your Video Is Downloading...', 'Message', 0)
         base, ext = os.path.splitext(out_video)
         new_file = base + '.mp4'
         if os.path.isfile(new_file):
             new_file = base+str(randint(1,100000)) + '.mp4'
             os.rename(out_video, new_file)
+            os.system("explorer .")
             return
         os.rename(out_video, new_file)
-        sleep(1.5)
 
-        os.system("mediaplayer "+new_file)
+        os.system("explorer .")
 
 if __name__ == "__main__":
     YoutubeDownload()
