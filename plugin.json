@@ -1,0 +1,12 @@
+{
+    "ID": "d58fbe34-bce7-11ed-afa1-0242ac120002",
+    "ActionKeyword": "-yt",
+    "Name": "Youtube Downloader",
+    "Description": "A youtube downloader",
+    "Author": "LordOfTheEel",
+    "Version": "1.0.0-alpha",
+    "Language": "python",
+    "Website": "n/a",
+    "IcoPath": "cat.png",
+    "ExecuteFileName": "main.py"
+}
