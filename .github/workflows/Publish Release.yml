@@ -35,7 +35,7 @@ jobs:
         if: success()
         uses: softprops/action-gh-release@v1
         with:
-          files: 'Flow.Launcher.Plugin.YTDownload.zip'
+          files: 'Flow.Launcher.Plugin.YTDownloader.zip'
           tag_name: "v${{steps.version.outputs.prop}}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
