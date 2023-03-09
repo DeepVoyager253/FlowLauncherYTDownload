@@ -15,9 +15,21 @@ from random import randint
 class YoutubeDownload(FlowLauncher):
 
     def query(self, query):
-        if not query.startswith("https://www.youtube.com"):
+        if not query.startswith("https://www.youtube.com") or query.startswith("https://youtu.be"):
             return
         self.queryd = query
+        try:
+            yt_vid = pytube.YouTube(query)
+        except:
+            return [{
+                "Title": "Invalid link!",
+                "SubTitle": "Please enter a valid youtube link!",
+                "IcoPath": "cat.png",
+                "JsonRPCAction": {
+                    "method": "",
+                    "parameters": []
+                }}]
+        
         return [
             {
                 "Title": "Download your video's audio.",
