@@ -7,7 +7,7 @@
     "Version": "1.0.0-beta",
     "Language": "python",
     "Website": "n/a",
-    "IcoPath": "cat.png",
+    "IcoPath": "icon.png",
     "ExecuteFileName": "main.py",
     "UrlSourceCode": "https://github.com/DeepVoyager253/FlowLauncherYTDownload",
     "UrlDownload": "https://github.com/DeepVoyager253/FlowLauncherYTDownload/releases/download/v1.0.0-beta/Flow.Launcher.Plugin.YTDownloader.zip"
