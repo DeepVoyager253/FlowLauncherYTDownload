@@ -2,7 +2,7 @@
     "ID": "d58fbe34-bce7-11ed-afa1-0242ac120002",
     "ActionKeyword": "-yt",
     "Name": "Youtube Downloader",
-    "Description": "A youtube downloader",
+    "Description": "Download videos on youtube! usage: {-yt} {youtube link}",
     "Author": "LordOfTheEel; Eyal.Br",
     "Version": "1.0.0-beta",
     "Language": "python",
