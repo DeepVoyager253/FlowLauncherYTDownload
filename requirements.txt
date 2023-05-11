@@ -1,2 +1,2 @@
 flowlauncher
-yt-dlp
+pytube
