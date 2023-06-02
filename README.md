@@ -13,3 +13,6 @@ support for platforms other than youtube.
 
 Hope you enjoy and if there are any problems/crashes please make sure to create an issue.
 This plugin still needs some bug fixing, but i can find those better if you report them.
+
+**IMPORTANT**
+in some cases, there will be an error when this plugin runs. i recommend installing python 3.8.9 from this link: https://www.python.org/downloads/release/python-389/ and going to flow launchers settings, then selecting the installation path in the "python path" field. that fixes it.
