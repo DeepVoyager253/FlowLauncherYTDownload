@@ -19,7 +19,7 @@ class YoutubeDownload(FlowLauncher):
         #         "SubTitle": "This is an Invalid youtube URL!",
         #         "IcoPath": "Images/Media_Player_Windows_11_logo.png"
         #     }]
-        self.queryd = query
+        self.query = query
         return [
             {
                 "Title": "Download your video's audio.",
@@ -47,7 +47,7 @@ class YoutubeDownload(FlowLauncher):
 
 
     def download_audio(self):
-        url = self.queryd
+        url = self.query
         try:
             youtube = YouTube(url)
             video = youtube.streams.filter(only_audio=True).first()
@@ -61,7 +61,7 @@ class YoutubeDownload(FlowLauncher):
             print("Error:", str(e))
 
     def download_video(self):
-        url = self.queryd
+        url = self.query
         try:
             youtube = YouTube(url)
             video = youtube.streams.filter(progressive=True, file_extension='mp4').first()
