@@ -13,13 +13,14 @@ from pathlib import Path
 class YoutubeDownload(FlowLauncher):
 
     def query(self, query):
-        # if not query.startswith("https://www.youtube.com") and not query.startswith("https://youtu.be"):
-        #     return [            {
-        #         "Title": "Invalid URL!",
-        #         "SubTitle": "This is an Invalid youtube URL!",
-        #         "IcoPath": "Images/Media_Player_Windows_11_logo.png"
-        #     }]
-        self.query = query
+        self.queryd = query
+        if not query.startswith("https://www.youtube.com") and not query.startswith("https://youtu.be"):
+            return [            {
+                "Title": "Invalid URL!",
+                "SubTitle": "This is an Invalid youtube URL!",
+                "IcoPath": "Images/Media_Player_Windows_11_logo.png"
+            }]
+
         return [
             {
                 "Title": "Download your video's audio.",
@@ -27,7 +28,7 @@ class YoutubeDownload(FlowLauncher):
                 "IcoPath": "Images/Media_Player_Windows_11_logo.png",
                 "JsonRPCAction": {
                     "method": "download_audio",
-                    "parameters": []
+                    "parameters": [query]
                 }
             },
                 {
@@ -36,7 +37,7 @@ class YoutubeDownload(FlowLauncher):
                 "IcoPath": "Images/7-player_windows_media_player_video-512.png",
                 "JsonRPCAction": {
                     "method": "download_video",
-                    "parameters": []
+                    "parameters": [query]
                 }
             }
         ]
@@ -46,30 +47,19 @@ class YoutubeDownload(FlowLauncher):
 
 
 
-    def download_audio(self):
-        url = self.query
-        try:
-            youtube = YouTube(url)
-            video = youtube.streams.filter(only_audio=True).first()
-            audio_file = video.download(output_path="%USERPROFILE%\\Downloads")
-            print("Audio downloaded successfully!")
-            print("File saved at:", audio_file)
-            os.system("explorer .")
-        except Exception as e:
-            print("Error:", str(e))
+    def download_audio(self, url):
+       
+        youtube = YouTube(url)
+        video = youtube.streams.filter(only_audio=True).first()
+        audio_file = video.download(output_path="Your Downloads")
+        os.system("explorer .")
 
-    def download_video(self):
-        url = self.query
-        try:
-            youtube = YouTube(url)
-            video = youtube.streams.filter(progressive=True, file_extension='mp4').first()
-            video_file = video.download(output_path="%USERPROFILE%\\Downloads")
-            print("Video downloaded successfully!")
-            print("File saved at:", video_file)
-            os.system("explorer .")
-        except Exception as e:
-            print("Error:", str(e))
+    def download_video(self, url):
+        youtube = YouTube(url)
+        video = youtube.streams.filter(progressive=True, file_extension='mp4').first()
+        video_file = video.download(output_path="Your Downloads")
+        os.system("explorer .")
+
 
 if __name__ == "__main__":
     YoutubeDownload()
-
