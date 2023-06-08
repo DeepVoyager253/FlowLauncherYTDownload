@@ -47,7 +47,6 @@ class YoutubeDownload(FlowLauncher):
 
 
     def download_audio(self):
-        os.chdir("%USERPROFILE%")
         url = self.queryd
         try:
             youtube = YouTube(url)
@@ -62,7 +61,6 @@ class YoutubeDownload(FlowLauncher):
             print("Error:", str(e))
 
     def download_video(self):
-        os.chdir("%USERPROFILE%")
         url = self.queryd
         try:
             youtube = YouTube(url)
