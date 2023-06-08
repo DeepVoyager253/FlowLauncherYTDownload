@@ -51,9 +51,7 @@ class YoutubeDownload(FlowLauncher):
         try:
             youtube = YouTube(url)
             video = youtube.streams.filter(only_audio=True).first()
-            output_path = os.path.join(os.getcwd(), "downloads")
-            os.makedirs(output_path, exist_ok=True)
-            audio_file = video.download(output_path=output_path)
+            audio_file = video.download(output_path="%USERPROFILE%\\Downloads")
             print("Audio downloaded successfully!")
             print("File saved at:", audio_file)
             os.system("explorer .")
@@ -65,7 +63,7 @@ class YoutubeDownload(FlowLauncher):
         try:
             youtube = YouTube(url)
             video = youtube.streams.filter(progressive=True, file_extension='mp4').first()
-            video_file = video.download()
+            video_file = video.download(output_path="%USERPROFILE%\\Downloads")
             print("Video downloaded successfully!")
             print("File saved at:", video_file)
             os.system("explorer .")
