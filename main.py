@@ -52,6 +52,9 @@ class YoutubeDownload(FlowLauncher):
         youtube = YouTube(url)
         video = youtube.streams.filter(only_audio=True).first()
         audio_file = video.download(output_path="Your Downloads")
+        base, ext = os.path.splitext(audio_file)
+        new_file = base + '.mp3'
+        os.rename(audio_file, new_file)
         os.system("explorer .")
 
     def download_video(self, url):
