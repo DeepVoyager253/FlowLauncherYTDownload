@@ -56,7 +56,7 @@ class YoutubeDownload(FlowLauncher):
 
     def download_video(self, url):
         youtube = YouTube(url)
-        video = youtube.streams.filter(progressive=True, file_extension='mp4').first()
+        video = youtube.streams.get_highest_resolution()
         video_file = video.download(output_path="Your Downloads")
         os.system("explorer .")
 
