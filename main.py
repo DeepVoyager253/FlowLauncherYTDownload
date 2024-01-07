@@ -73,18 +73,20 @@ class YoutubeDownload(FlowLauncher):
         return []
 
     def download_audio(self, url):
+        download_path = str(Path.home() / "Downloads" / "Youtube Downloads"); # Define the Download Path
         youtube = YouTube(url)
         video = youtube.streams.filter(only_audio = True).first()
-        audio_file = video.download(output_path = "Your Downloads")
+        audio_file = video.download(output_path = download_path)
         base, ext = os.path.splitext(audio_file) # Get the file name
         os.replace(audio_file, base + '.mp3')    # Convert to mp3
-        os.system(f'explorer "{os.path.abspath(r".\Your Downloads")}"')
+        os.system(f'explorer "{download_path}"')
 
     def download_video(self, url):
+        download_path = str(Path.home() / "Downloads" / "Youtube Downloads"); # Define the Download Path
         youtube = YouTube(url)
         video = youtube.streams.get_highest_resolution()
-        video_file = video.download(output_path = "Your Downloads")
-        os.system(f'explorer "{os.path.abspath(r".\Your Downloads")}"')
+        video_file = video.download(output_path = download_path)
+        os.system(f'explorer "{download_path}"')
 
 
 if __name__ == "__main__":
