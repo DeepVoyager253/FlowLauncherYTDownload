@@ -14,3 +14,5 @@ support for platforms other than youtube.
 Hope you enjoy and if there are any problems/crashes please make sure to create an issue.
 This plugin still needs some bug fixing, but i can find those better if you report them.
 
+
+march 2024: don't count on it, but i MIGHT overhall this plugin later this month
